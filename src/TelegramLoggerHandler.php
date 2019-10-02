@@ -2,10 +2,8 @@
 
 namespace RLaurindo\TelegramLogger;
 
-use Exception;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
-use RLaurindo\TelegramService;
 
 /**
  * Class TelegramHandler
@@ -59,9 +57,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
      */
     public function write(array $record)
     {
-        try {
-            $this->telegramService->sendMessage($this->formatLogText($record['formatted'], $record['level']));
-        } catch (Exception $exception) {}
+        $this->telegramService->sendMessage($this->formatLogText($record['formatted'], $record['level_name']));
     }
 
     /**
