@@ -1,0 +1,30 @@
+{
+  "name": "rafaellaurindo/laravel-telegram-logging",
+  "description": "Send Laravel logs to a Telegram chat via Telegram Bot.",
+  "require": {
+    "php": "^7.2",
+    "laravel/framework": "5.6.*|5.7.*|5.8.*|6.0.*"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rafael Laurindo",
+      "email": "rafaelfilholm@gmail.com",
+      "homepage": "https://rafaellaurindo.com.br"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-0": {
+      "RLaurindo\\TelegramLogger\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RLaurindo\\TelegramLogger\\TelegramLoggerServiceProvider"
+      ]
+    }
+  }
+}
