@@ -52,7 +52,9 @@ class TelegramService
         $requestQueryData = $this->prepareRequestQuery($messageText);
 
         try {
-            file_get_contents($telegramApiSendMessageFullUrl . '?' . $requestQueryData);
+            $responseStatusCode = $this->getResponseStatusCode($telegramApiSendMessageFullUrl . '?' . $requestQueryData);
+
+            return $this->returnResponseOfApiByStatusCode($responseStatusCode);
         } catch (Exception $exception) {}
     }
 
@@ -63,5 +65,24 @@ class TelegramService
             'chat_id' => $this->telegramChatId,
             'parse_mode' => 'html',
         ]);
+    }
+
+    private function returnResponseOfApiByStatusCode($responseStatusCode)
+    {
+        $responseMessages = [
+            '200' => 'Message has been sent.',
+            '400' => 'Chat ID is not valid.',
+            '401' => 'Bot Token is not valid.',
+            '404' => 'Bot Token is not valid.',
+        ];
+
+        return $responseMessages[$responseStatusCode] ?? null;
+    }
+
+    private function getResponseStatusCode(string $url): string
+    {
+        $requestHeaders = get_headers($url);
+        $requestStatusCode = substr($requestHeaders[0], 9, 3);
+        return $requestStatusCode;
     }
 }
