@@ -1,6 +1,7 @@
 {
   "name": "rafaellaurindo/laravel-telegram-logging",
   "description": "Send Laravel logs to a Telegram chat via Telegram Bot.",
+  "homepage": "https://github.com/rafaellaurindo/laravel-telegram-logging",
   "require": {
     "php": "^7.2",
     "laravel/framework": "5.6.*|5.7.*|5.8.*|6.0.*"
