@@ -12,6 +12,7 @@ use Monolog\Logger;
  */
 class TelegramLoggerHandler extends AbstractProcessingHandler
 {
+
     /**
      * Application name
      *
@@ -57,23 +58,31 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
      */
     protected function write(array $record): void
     {
-        $this->telegramService->sendMessage($this->formatLogText($record['formatted'], $record['level_name']));
+        $this->telegramService->sendMessage($this->formatLogText($record));
     }
 
     /**
      * Formart log text to send
      *
-     * @var string $logText
-     * @var string $logLevel
-     *
+     * @var array $log
      * @return string
      */
-    protected function formatLogText(string $logText, string $logLevel): string
+    protected function formatLogText(array $log): string
     {
-        return '<b>Application:</b> ' . $this->applicationName . PHP_EOL
-        . '<b>Envioronment:</b> ' . $this->applicationEnvioronment . PHP_EOL
-            . '<b>Log Level:</b> ' . $logLevel . PHP_EOL
-            . '<b>Log:</b>' . PHP_EOL
-            . '<code>' . $logText . '</code>';
+        $logText = '<b>Application:</b> ' . $this->applicationName . PHP_EOL;
+        $logText .= '<b>Envioronment:</b> ' . $this->applicationEnvioronment . PHP_EOL;
+        $logText .= '<b>Log Level:</b> <code>' . $log['level_name'] . '</code>' . PHP_EOL;
+
+        if (!empty($log['extra'])) {
+            $logText .= '<b>Extra:</b>' . PHP_EOL . '<code>' . json_encode($log['extra']) . '</code>' . PHP_EOL;
+        }
+
+        if (!empty($log['context'])) {
+            $logText .= '<b>Context:</b>' . PHP_EOL . '<code>' . json_encode($log['context']) . '</code>' . PHP_EOL;
+        }
+
+        $logText .= '<b>Message:</b>' . PHP_EOL . '<pre>' . $log['message'] . '</pre>';
+
+        return $logText;
     }
 }
