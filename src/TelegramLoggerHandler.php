@@ -12,7 +12,6 @@ use Monolog\Logger;
  */
 class TelegramLoggerHandler extends AbstractProcessingHandler
 {
-
     /**
      * Application name
      *
@@ -54,8 +53,9 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
      * Send log text to Telegram
      *
      * @param array $record
+     * @return void
      */
-    public function write(array $record)
+    protected function write(array $record): void
     {
         $this->telegramService->sendMessage($this->formatLogText($record['formatted'], $record['level_name']));
     }
@@ -68,7 +68,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
      *
      * @return string
      */
-    private function formatLogText(string $logText, string $logLevel): string
+    protected function formatLogText(string $logText, string $logLevel): string
     {
         return '<b>Application:</b> ' . $this->applicationName . PHP_EOL
         . '<b>Envioronment:</b> ' . $this->applicationEnvioronment . PHP_EOL
