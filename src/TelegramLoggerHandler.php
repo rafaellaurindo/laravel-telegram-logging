@@ -18,14 +18,14 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
      *
      * @var string
      */
-    private $applicationName;
+    private string $applicationName;
 
     /**
      * Application environment
      *
      * @var string
      */
-    private $applicationEnvioronment;
+    private string $applicationEnvironment;
 
     /**
      * Instance of TelegramService
@@ -45,7 +45,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
         parent::__construct($monologLevel, true);
 
         $this->applicationName = config('app.name');
-        $this->applicationEnvioronment = config('app.env');
+        $this->applicationEnvironment = config('app.env');
 
         $this->telegramService = new TelegramService(config('telegram-logger.bot_token'), config('telegram-logger.chat_id'));
     }
@@ -70,7 +70,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
     protected function formatLogText(array $log): string
     {
         $logText = '<b>Application:</b> ' . $this->applicationName . PHP_EOL;
-        $logText .= '<b>Envioronment:</b> ' . $this->applicationEnvioronment . PHP_EOL;
+        $logText .= '<b>Envioronment:</b> ' . $this->applicationEnvironment . PHP_EOL;
         $logText .= '<b>Log Level:</b> <code>' . $log['level_name'] . '</code>' . PHP_EOL;
 
         if (!empty($log['extra'])) {
