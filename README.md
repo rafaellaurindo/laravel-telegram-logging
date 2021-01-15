@@ -2,6 +2,7 @@
 
 Send Laravel logs to a Telegram chat via Telegram Bot.
 
+[![Total Downloads](https://poser.pugx.org/rafaellaurindo/laravel-telegram-logging/downloads)](//packagist.org/packages/rafaellaurindo/laravel-telegram-logging)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LUAC5W7GF2BVW&source=url)
 [![license](https://img.shields.io/github/license/rafaellaurindo/laravel-telegram-logging.svg)](https://github.com/rafaellaurindo/laravel-telegram-logging/blob/master/LICENSE)
 
