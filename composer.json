@@ -3,7 +3,7 @@
   "description": "Send Laravel logs to a Telegram chat via Telegram Bot.",
   "homepage": "https://github.com/rafaellaurindo/laravel-telegram-logging",
   "require": {
-    "php": "^7.2|^7.3",
+    "php": ">=7.2",
     "laravel/framework": "7.*|8.*",
     "monolog/monolog": "2.*"
   },
@@ -19,7 +19,7 @@
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
-      "RLaurindo\\TelegramLogger\\": "src"
+      "RLaurindo\\TelegramLogger\\": "src/"
     }
   },
   "extra": {

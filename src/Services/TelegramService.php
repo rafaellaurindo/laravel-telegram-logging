@@ -1,6 +1,6 @@
 <?php
 
-namespace RLaurindo\TelegramLogger;
+namespace RLaurindo\TelegramLogger\Services;
 
 /**
  * Class TelegramService

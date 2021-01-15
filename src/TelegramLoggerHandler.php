@@ -4,6 +4,7 @@ namespace RLaurindo\TelegramLogger;
 
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
+use RLaurindo\TelegramLogger\Services\TelegramService;
 
 /**
  * Class TelegramHandler
