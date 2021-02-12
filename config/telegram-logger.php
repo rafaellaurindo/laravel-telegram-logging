@@ -22,4 +22,17 @@ return [
      */
 
     'chat_id' => env('TELEGRAM_CHAT_ID'),
+    
+    /*
+    |--------------------------------------------------------------------------
+    | TELEGRAM BASE URL
+    |--------------------------------------------------------------------------
+    |
+    | Defines the base url of telegram. For countries block telegram servers, 
+    | this create a bridge for sending message to telegram. for more info see:
+    | https://github.com/AmirrezaNasiri/telegram-web-bridge
+    |
+     */
+
+    'base_url' => env('TELEGRAM_BASE_URL', 'https://api.telegram.org/'),
 ];
