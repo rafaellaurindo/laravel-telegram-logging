@@ -48,7 +48,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
         $this->applicationName = config('app.name');
         $this->applicationEnvironment = config('app.env');
 
-        $this->telegramService = new TelegramService(config('telegram-logger.bot_token'), config('telegram-logger.chat_id'));
+        $this->telegramService = new TelegramService(config('telegram-logger.bot_token'), config('telegram-logger.chat_id'), config('telegram-logger.base_url'));
     }
 
     /**
