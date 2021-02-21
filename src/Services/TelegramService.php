@@ -38,9 +38,9 @@ class TelegramService
      */
     private $telegramChatId;
 
-    public function __construct(string $telegramBotToken, string $telegramChatId)
+    public function __construct(string $telegramBotToken, string $telegramChatId, string $telegramApiBaseUrl)
     {
-        $this->telegramApiBaseUrl = 'https://api.telegram.org/bot';
+        $this->telegramApiBaseUrl = $telegramApiBaseUrl . 'bot';
         $this->telegramApiSendMessageEndpoint = 'sendMessage';
         $this->telegramBotToken = $telegramBotToken;
         $this->telegramChatId = $telegramChatId;
