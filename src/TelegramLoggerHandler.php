@@ -71,7 +71,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
     protected function formatLogText(array $log): string
     {
         $logText = '<b>Application:</b> ' . $this->applicationName . PHP_EOL;
-        $logText .= '<b>Envioronment:</b> ' . $this->applicationEnvironment . PHP_EOL;
+        $logText .= '<b>Environment:</b> ' . $this->applicationEnvironment . PHP_EOL;
         $logText .= '<b>Log Level:</b> <code>' . $log['level_name'] . '</code>' . PHP_EOL;
 
         if (!empty($log['extra'])) {
