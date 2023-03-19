@@ -4,6 +4,7 @@ namespace RLaurindo\TelegramLogger;
 
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
+use Monolog\LogRecord;
 use RLaurindo\TelegramLogger\Services\TelegramService;
 
 /**
@@ -57,7 +58,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
      * @param array $record
      * @return void
      */
-    protected function write(array $record): void
+    protected function write(LogRecord $record): void
     {
         $this->telegramService->sendMessage($this->formatLogText($record));
     }
@@ -68,7 +69,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
      * @var array $log
      * @return string
      */
-    protected function formatLogText(array $log): string
+    protected function formatLogText(LogRecord $log): string
     {
         $logText = '<b>Application:</b> ' . $this->applicationName . PHP_EOL;
         $logText .= '<b>Environment:</b> ' . $this->applicationEnvironment . PHP_EOL;
